@@ -19,7 +19,7 @@ public class MinimalTerminalCalendar {
     private Months month;
 
     /**
-     * Schaltjahr.
+     * Schaltjahr
      */
     private boolean isLeapYear = false;
 
@@ -77,10 +77,8 @@ public class MinimalTerminalCalendar {
             Sonderfall ist der Februar. Falls es ein Schaltjahr ist, muss noch 
             ein Tag extra draufgerechnet werden.
             */
-            if(i == 1) {
-                if(isLeapYear){
-                    days += 1;
-                }
+            if(i == 1 && isLeapYear){
+                days += 1;
             }
             days += months[i].days();
         }
@@ -88,6 +86,7 @@ public class MinimalTerminalCalendar {
         //Anzahl der Tage mod 7 ergibt die übrigen Tage + Offset des ersten Tag des Jahres = Wochentag
         return (getFirstWeekdayOfYear() + (days % 7)) % 7;
     }
+
     /**
      * Generiert einen String, der auf der Konsole ausgegeben werden kann
      * @return Kalenderstring
@@ -142,13 +141,7 @@ public class MinimalTerminalCalendar {
             else{
                 sb.append(" ");
             }
-
-
         }
-
-
         return sb.toString();
     }
-
-    
 }
